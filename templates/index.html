@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+    <style>
+
+        .player_wrap {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .switchBtn {
+            background-color: #5e78ad;
+            white-space: normal;
+            color: white;
+            aspect-ratio: 1 / 1;
+            height: 100%;
+            min-width: 66px;
+            border-radius: 8%;
+            border: 3px solid #3c5b9a;
+            margin-left: 3px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="player_wrap">
+        <audio-player src="{{url_for('static', filename='/audio/Rick Astley - Never Gonna Give You Up (radio edit).mp3')}}"
+                        title="Rick Astley - Never Gonna Give You Up (radio edit).mp3"
+                        bar-width="5"
+                        bar-gap="2"
+                        id="player1"
+        ></audio-player>
+        <audio-player src="{{url_for('static', filename='/audio/Rick Astley - Never Gonna Give You Up (Nikitos edit).mp3')}}"
+                        title="Rick Astley - Never Gonna Give You Up (Nikitos edit).mp3"
+                        bar-width="5"
+                        bar-gap="2"
+                        id="player2"
+        ></audio-player>
+       
+
+        <input type="button" id="switchBtn" class="switchBtn" value="FX OFF">
+
+
+    </div>    
+    <script src="{{url_for('static', filename='js/player.js')}}"></script>
+
+</body>
+</html>
