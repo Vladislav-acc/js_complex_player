@@ -1,6 +1,6 @@
-var constraints = { audio: true }
-navigator.mediaDevices.getUserMedia(constraints)
-.then((stream) => {
+// var constraints = { audio: true }
+// navigator.mediaDevices.getUserMedia(constraints)
+// .then((stream) => {
     class AudioPlayer extends HTMLElement {
       playing = false;
       volume = 0.4;
@@ -472,8 +472,8 @@ navigator.mediaDevices.getUserMedia(constraints)
     }
     
     customElements.define('audio-player', AudioPlayer);
-  }
-)
+//   }
+// )
 
 
 // const buttonA = document.querySelector("#btnA");

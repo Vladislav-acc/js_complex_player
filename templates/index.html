@@ -22,11 +22,84 @@
             border-radius: 8%;
             border: 3px solid #3c5b9a;
             margin-left: 3px;
+            cursor: pointer;
         }
 
+        .search-box {
+            width: 600px;
+            background: #fff;
+            margin: 100px auto 10px;
+            border: 5px solid #5e78ad;
+            border-radius: 2%;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .input {
+            flex: 1;
+            height: 50px;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+
+        ::placeholder {
+            color: #3c5b9a;
+        }
+
+        .result-box {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .result-box ul {
+            border-top: 1px solid #999;
+            padding: 15px 10 px;
+        }
+
+        .result-box ul li {
+            list-style: none;
+            border-radius: 3px;
+            padding: 15px 10px;
+            cursor: pointer;
+        }
+
+        .result-box ul li:hover {
+            background: #e9f3ff;
+        }
+
+        .listBtn {
+            width: 50px;
+            min-width: 50px;
+            height: 50px;
+            border: none;
+            background: none;
+            font-size: 200%;
+            color: #5e78ad;
+            cursor: pointer;
+        }
+        /* https://drive.google.com/uc?export=download&id=1I1VUrDTR-wd7ZARHiq-cFy6xUNKLNlcs */
     </style>
+    <script src="https://kit.fontawesome.com/970a3685a6.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+    <div class="search-box">
+        <div class="row">
+            <input type="text" class="input" id="input-box" placeholder="Выберите модель наушников"
+            autocomplete="off">
+            <button class="listBtn" type="button"></button>
+        </div>
+        <div class="result-box"></div>
+    </div>
+
     <div class="player_wrap">
         <audio-player src="{{url_for('static', filename='/audio/Rick Astley - Never Gonna Give You Up (radio edit).mp3')}}"
                         title="Rick Astley - Never Gonna Give You Up (radio edit).mp3"
@@ -46,7 +119,8 @@
 
 
     </div>    
+    
     <script src="{{url_for('static', filename='js/player.js')}}"></script>
-
+    <script src="{{url_for('static', filename='js/search_box.js')}}"></script>
 </body>
 </html>
