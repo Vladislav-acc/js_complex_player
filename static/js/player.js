@@ -426,7 +426,7 @@
          ${this.style()}
           <figure class="audio-player">
             <figcaption class="audio-name"></figcaption>
-            <audio style="display: none"></audio>
+            <audio style="display: none" type="audio/mpeg"></audio>
             <button class="play-btn" type="button">play</button>
             <div class="progress-indicator">
                 <span class="current-time">0:0</span>
@@ -441,7 +441,7 @@
         `;
         
         this.audio = this.shadowRoot.querySelector('audio');
-        // this.audio.crossOrigin = "anonymous";
+        this.audio.crossOrigin = "true";
         this.playPauseBtn = this.shadowRoot.querySelector('.play-btn');
         this.titleElement = this.shadowRoot.querySelector('.audio-name');
         this.volumeBar = this.shadowRoot.querySelector('.volume-field');

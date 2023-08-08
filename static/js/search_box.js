@@ -30,7 +30,7 @@ inputBox.onkeyup = function() {
     let input = inputBox.value;
     if (input.length) {
         result = availableKeywords.filter((keyword) => {
-            return keyword.toLocaleLowerCase().split(' ').join('').includes(input.toLowerCase().split(' ').join(''));
+            return keyword.toLocaleLowerCase().replace(' ', '').includes(input.toLowerCase().replace(' ', ''));
         });
         console.log(result);
     }

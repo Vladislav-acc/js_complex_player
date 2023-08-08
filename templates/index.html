@@ -87,7 +87,6 @@
         }
         /* https://drive.google.com/uc?export=download&id=1I1VUrDTR-wd7ZARHiq-cFy6xUNKLNlcs */
     </style>
-    <script src="https://kit.fontawesome.com/970a3685a6.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -101,25 +100,42 @@
     </div>
 
     <div class="player_wrap">
-        <audio-player src="{{url_for('static', filename='/audio/Rick Astley - Never Gonna Give You Up (radio edit).mp3')}}"
+        <audio-player src="https://dl.dropbox.com/scl/fi/xldn15o2rrli4ofe3c6k2/Rick-Astley-Never-Gonna-Give-You-Up-radio-edit.mp3?rlkey=5tsc7ekr36ojaq309ohn2yysv&raw=1"
                         title="Rick Astley - Never Gonna Give You Up (radio edit).mp3"
                         bar-width="5"
                         bar-gap="2"
                         id="player1"
+                        
         ></audio-player>
-        <audio-player src="{{url_for('static', filename='/audio/Rick Astley - Never Gonna Give You Up (Nikitos edit).mp3')}}"
+        <!-- src="{{url_for('static', filename='/audio/Rick Astley - Never Gonna Give You Up (radio edit).mp3')}}" -->
+        <!-- <audio-player src="{{url_for('static', filename='/audio/Rick Astley - Never Gonna Give You Up (Nikitos edit).mp3')}}"
                         title="Rick Astley - Never Gonna Give You Up (Nikitos edit).mp3"
                         bar-width="5"
                         bar-gap="2"
                         id="player2"
+        ></audio-player> -->
+        <audio-player src="https://dl.dropbox.com/scl/fi/7mah7eilhw2e3ws7zwplz/Rick-Astley-Never-Gonna-Give-You-Up-Nikitos-edit.mp3?rlkey=6pqjfv21f6bfckag9e670im99&raw=1"
+            title="Rick Astley - Never Gonna Give You Up (Nikitos edit).mp3"
+            bar-width="5"
+            bar-gap="2"
+            id="player2"
         ></audio-player>
-       
 
         <input type="button" id="switchBtn" class="switchBtn" value="FX OFF">
 
 
     </div>    
-    
+
+
+ <audio controls>
+    <source src="https://docs.google.com/uc?export=open&id=1Ccf0LGlkHRSJEPnbTYtusOul7MhzURIY" type="audio/mp3">
+   <p>This browser does not support HTML5 audio</p>
+    </audio>
+
+    <audio controls>
+        <source src="https://dl.dropbox.com/scl/fi/7mah7eilhw2e3ws7zwplz/Rick-Astley-Never-Gonna-Give-You-Up-Nikitos-edit.mp3?rlkey=6pqjfv21f6bfckag9e670im99&dl=0" type="audio/mpeg">
+       <p>This browser does not support HTML5 audio</p>
+        </audio>
     <script src="{{url_for('static', filename='js/player.js')}}"></script>
     <script src="{{url_for('static', filename='js/search_box.js')}}"></script>
 </body>
