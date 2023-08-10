@@ -6,34 +6,45 @@
     <title>Audio Player</title>
     <style>
 
-        .player_wrap {
+        .pl-btn-secion {
             display: flex;
-            justify-content: center;
-            position: relative;
+            justify-content: start;
+            width: 50%;
+            height: 50%;
+            margin-top: 3px;
+            min-width: 347px;
         }
 
-        .switchBtn {
+        .player-wrap {
+            flex-grow: 10;
+        }
+
+        .switch-btn {
             background-color: #5e78ad;
             white-space: normal;
             color: white;
             aspect-ratio: 1 / 1;
             height: 100%;
-            min-width: 66px;
+            min-width: 79.2px;
+            max-width: 79.2px;
             border-radius: 8%;
             border: 3px solid #3c5b9a;
-            margin-left: 3px;
+            margin: 0 0 0 3px;
             cursor: pointer;
+            flex-grow: 0.5;
+            padding: 0 0 0 0px;
         }
 
         .search-box {
-            width: 600px;
+            width: calc(50% - 10px);
+            min-width: 337px;
+            height: 50%;
             background: #fff;
-            margin: 100px auto 10px;
             border: 5px solid #5e78ad;
-            border-radius: 2%;
+            border-radius: 5px;
         }
 
-        .row {
+        .search-box-row {
             display: flex;
             align-items: center;
             padding: 10px 20px;
@@ -55,27 +66,30 @@
         }
 
         .result-box {
-            max-height: 300px;
+            max-height: 200px;
             overflow-y: scroll;
         }
 
         .result-box ul {
             border-top: 1px solid #999;
-            padding: 15px 10 px;
+            padding: 1em 1em;
         }
 
         .result-box ul li {
             list-style: none;
             border-radius: 3px;
-            padding: 15px 10px;
+            padding: 0.5em 0.5em;
             cursor: pointer;
+            font-family: Arial;
+            font-size: small;
         }
 
         .result-box ul li:hover {
             background: #e9f3ff;
         }
 
-        .listBtn {
+        .clear-btn {
+            
             width: 50px;
             min-width: 50px;
             height: 50px;
@@ -86,57 +100,57 @@
             cursor: pointer;
         }
         /* https://drive.google.com/uc?export=download&id=1I1VUrDTR-wd7ZARHiq-cFy6xUNKLNlcs */
+
+        .pl-elem-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
     </style>
 </head>
 <body>
-
-    <div class="search-box">
-        <div class="row">
-            <input type="text" class="input" id="input-box" placeholder="Выберите модель наушников"
-            autocomplete="off">
-            <button class="listBtn" type="button"></button>
+    <div class="pl-elem-container">
+        <div class="search-box" >
+            <div class="search-box-row">
+                <input type="text" class="input" id="input-box" placeholder="Выберите модель наушников"
+                autocomplete="off" checked=false>
+                <button class="clear-btn" type="button"></button>
+            </div>
+            <div class="result-box"></div>
         </div>
-        <div class="result-box"></div>
-    </div>
-
-    <div class="player_wrap">
-        <audio-player src="https://dl.dropbox.com/scl/fi/xldn15o2rrli4ofe3c6k2/Rick-Astley-Never-Gonna-Give-You-Up-radio-edit.mp3?rlkey=5tsc7ekr36ojaq309ohn2yysv&raw=1"
-                        title="Rick Astley - Never Gonna Give You Up (radio edit).mp3"
-                        bar-width="5"
-                        bar-gap="2"
-                        id="player1"
-                        
-        ></audio-player>
-        <!-- src="{{url_for('static', filename='/audio/Rick Astley - Never Gonna Give You Up (radio edit).mp3')}}" -->
-        <!-- <audio-player src="{{url_for('static', filename='/audio/Rick Astley - Never Gonna Give You Up (Nikitos edit).mp3')}}"
-                        title="Rick Astley - Never Gonna Give You Up (Nikitos edit).mp3"
-                        bar-width="5"
-                        bar-gap="2"
-                        id="player2"
-        ></audio-player> -->
-        <audio-player src="https://dl.dropbox.com/scl/fi/7mah7eilhw2e3ws7zwplz/Rick-Astley-Never-Gonna-Give-You-Up-Nikitos-edit.mp3?rlkey=6pqjfv21f6bfckag9e670im99&raw=1"
-            title="Rick Astley - Never Gonna Give You Up (Nikitos edit).mp3"
-            bar-width="5"
-            bar-gap="2"
-            id="player2"
-        ></audio-player>
-
-        <input type="button" id="switchBtn" class="switchBtn" value="FX OFF">
+        <div class="pl-btn-secion">
+        <div class="player-wrap">
+            <audio-player src="https://dl.dropbox.com/scl/fi/xldn15o2rrli4ofe3c6k2/Rick-Astley-Never-Gonna-Give-You-Up-radio-edit.mp3?rlkey=5tsc7ekr36ojaq309ohn2yysv&raw=1"
+                            title="Rick Astley - Never Gonna Give You Up (radio edit).mp3"
+                            bar-width="5"
+                            bar-gap="2"
+                            id="player1"
+                            
+            ></audio-player>
+            <!-- src="{{url_for('static', filename='/audio/Rick Astley - Never Gonna Give You Up (radio edit).mp3')}}" -->
+            <!-- <audio-player src="{{url_for('static', filename='/audio/Rick Astley - Never Gonna Give You Up (Nikitos edit).mp3')}}"
+                            title="Rick Astley - Never Gonna Give You Up (Nikitos edit).mp3"
+                            bar-width="5"
+                            bar-gap="2"
+                            id="player2"
+            ></audio-player> -->
+            <audio-player src="https://dl.dropbox.com/scl/fi/7mah7eilhw2e3ws7zwplz/Rick-Astley-Never-Gonna-Give-You-Up-Nikitos-edit.mp3?rlkey=6pqjfv21f6bfckag9e670im99&raw=1"
+                title="Rick Astley - Never Gonna Give You Up (Nikitos edit).mp3"
+                bar-width="5"
+                bar-gap="2"
+                id="player2"
+            ></audio-player>
+            </div>          
+            <input type="button" id="switch-btn" class="switch-btn" value="FX OFF">
 
 
-    </div>    
-
-
- <audio controls>
-    <source src="https://docs.google.com/uc?export=open&id=1Ccf0LGlkHRSJEPnbTYtusOul7MhzURIY" type="audio/mp3">
-   <p>This browser does not support HTML5 audio</p>
-    </audio>
-
-    <audio controls>
-        <source src="https://dl.dropbox.com/scl/fi/7mah7eilhw2e3ws7zwplz/Rick-Astley-Never-Gonna-Give-You-Up-Nikitos-edit.mp3?rlkey=6pqjfv21f6bfckag9e670im99&dl=0" type="audio/mpeg">
-       <p>This browser does not support HTML5 audio</p>
-        </audio>
+        </div>  
+    </div>  
+    <!-- <audio controls src="https://dl.dropbox.com/scl/fi/xldn15o2rrli4ofe3c6k2/Rick-Astley-Never-Gonna-Give-You-Up-radio-edit.mp3?rlkey=5tsc7ekr36ojaq309ohn2yysv&raw=1"></audio> -->
     <script src="{{url_for('static', filename='js/player.js')}}"></script>
     <script src="{{url_for('static', filename='js/search_box.js')}}"></script>
+    <script src="{{url_for('static', filename='js/search_box_to_player.js')}}"></script>
 </body>
 </html>

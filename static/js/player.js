@@ -3,8 +3,8 @@
 // .then((stream) => {
     class AudioPlayer extends HTMLElement {
       playing = false;
-      volume = 0.4;
-      prevVolume = 0.4;
+      volume = 1;
+      prevVolume = 1;
       initialized = false;
       barWidth = 3;
       barGap = 1;
@@ -239,8 +239,9 @@
         <style>
           :host {
             width: 100%;
-            max-width: 400px;
+  
             font-family: sans-serif;
+
           }
           
           * {
@@ -255,7 +256,8 @@
             display: flex;
             align-items: center;
             position: relative;
-            margin: 0 0 25px;
+            margin: 0 0 0px;
+            height: 100%;
           }
           
           .audio-name {
@@ -275,12 +277,14 @@
               background: #5e78ad;
               margin: 0;
               border-radius: 3px;
+              display: none;
           }
           
           .play-btn {
-              width: 30px;
+              
               min-width: 30px;
-              height: 30px;
+              height: 80%;
+              aspect-ratio: 1 / 1;
               background: url("https://drive.google.com/uc?export=download&id=1b_MOfFyQI3N52iU1YZXcbgB3DmikLInF") 0 center/500% 100% no-repeat;
               appearance: none;
               border: none;
@@ -476,18 +480,12 @@
 // )
 
 
-// const buttonA = document.querySelector("#btnA");
-// const buttonB = document.querySelector("#btnB");
-
-
 customElements.whenDefined('audio-player').then((response) => {
   const bigPlayer1 = document.querySelector("#player1");
   const bigPlayer2 = document.querySelector("#player2");
   const player2MuteButton = bigPlayer2.volumeBar;
   player2MuteButton.parentNode.click();
   bigPlayer2.hidden = true;
-  // buttonA.style.backgroundColor = 'red';
-  // buttonA.disabled = true;
   
   return [bigPlayer1, bigPlayer2];
 }).then((result) => {
@@ -514,29 +512,7 @@ customElements.whenDefined('audio-player').then((response) => {
 const bigPlayer1 = document.querySelector("#player1");
 const bigPlayer2 = document.querySelector("#player2");
 
-// buttonA.addEventListener('click', () => {
-//   buttonA.disabled = true;
-//   buttonB.disabled = false;
-//   bigPlayer1.hidden = false;
-//   bigPlayer2.hidden = true;
-//   buttonA.style.backgroundColor = 'red';
-//   buttonB.style.backgroundColor = 'black';
-//   bigPlayer1.volumeBar.parentNode.click();
-//   bigPlayer2.volumeBar.parentNode.click();
-// }) 
-
-// buttonB.addEventListener('click', () => {
-//   buttonB.disabled = true;
-//   buttonA.disabled = false;
-//   bigPlayer1.hidden = true;
-//   bigPlayer2.hidden = false;
-//   buttonB.style.backgroundColor = 'red';
-//   buttonA.style.backgroundColor = 'black';
-//   bigPlayer1.volumeBar.parentNode.click();
-//   bigPlayer2.volumeBar.parentNode.click();
-// }) 
-
-const switchButton = document.querySelector('#switchBtn');
+const switchButton = document.querySelector('#switch-btn');
 switchButton.addEventListener('click', () => {
   buttonText = switchButton.value
   if (buttonText.indexOf("OFF") !== -1) {
@@ -554,3 +530,4 @@ switchButton.addEventListener('click', () => {
     bigPlayer2.volumeBar.parentNode.click();
   }
 })
+

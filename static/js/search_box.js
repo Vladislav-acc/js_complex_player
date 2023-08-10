@@ -25,21 +25,24 @@ availableKeywords.sort()
 const resultBox = document.querySelector(".result-box");
 const inputBox = document.getElementById("input-box");
 
-inputBox.onkeyup = function() {
+inputBox.addEventListener('keyup', (event) => {
+    
+    if (event.key !== 'Enter') {
     let result = [];
     let input = inputBox.value;
     if (input.length) {
         result = availableKeywords.filter((keyword) => {
-            return keyword.toLocaleLowerCase().replace(' ', '').includes(input.toLowerCase().replace(' ', ''));
+            return keyword.toLocaleLowerCase().replaceAll(' ', '').includes(input.toLowerCase().replaceAll(' ', ''));
         });
-        console.log(result);
+    } else {
+        inputBox.setAttribute('checked', false); 
     }
     display(result);
 
     if (!result.length) {
         resultBox.innerHTML = '';
-    }
-}
+    }}
+})
 
 function display(result) {
     const content = result.map((list)=>{
@@ -50,28 +53,27 @@ function display(result) {
 }
 
 function selectInput(list) {
+    console.log(inputBox.getAttribute('checked'));
     inputBox.value = list.innerHTML;
+    inputBox.setAttribute('checked', true);
+    console.log(inputBox.checked)
     resultBox.innerHTML = '';
+    inputBox.focus()
 }
 
-const listButton = document.querySelector('.listBtn');
+const listButton = document.querySelector('.clear-btn');
 listButton.addEventListener('click', () => {
-    // if (resultBox.innerHTML) {
-    //     resultBox.innerHTML = '';    
-    // } else {
-    //     display(availableKeywords);
-    // }
     if (inputBox.value) {
         inputBox.value = '';
+        inputBox.setAttribute('checked', false);
         display(availableKeywords)
     }
     
 })
 
 inputBox.addEventListener('click', () => {
-    console.log(resultBox.innerHTML)
     if (resultBox.innerHTML) {
-        resultBox.innerHTML = '';    
+        resultBox.innerHTML = '';   
     } else {
         display(availableKeywords);
     }
