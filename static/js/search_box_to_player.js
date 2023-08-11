@@ -23,11 +23,10 @@ function nameInLink(name, link) {
 }
 
 
-inputBox.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
+inputBox.addEventListener("selectModel", (event) => {
         console.log("Тык!");
         for (let link of earphoneList) {
-            if (nameInLink(inputBox.value, link)) {
+            if (nameInLink(selectedModel, link)) {
                 console.log("Есть попадание!");
                 if (bigPlayer1.playing) {
                     bigPlayer1.playPauseBtn.click();
@@ -36,10 +35,17 @@ inputBox.addEventListener("keydown", (event) => {
                 // bigPlayer2.seekTo(Math.max(bigPlayer1.progressBar.value, bigPlayer2.progressBar.value));
                 bigPlayer2.seekTo(0);
                 bigPlayer1.seekTo(0);
+                const player2PlayPauseButton = bigPlayer2.playPauseBtn;
+                const player2ProgressBar = bigPlayer2.progressBar;
+                player2PlayPauseButton.addEventListener('click', () => {
+                    console.log('play2 clicked');
+                    bigPlayer1.playPauseBtn.click();
+                  })
+                player2ProgressBar.addEventListener('input', (e) => {
+                    bigPlayer1.seekTo(bigPlayer2.progressBar.value);
+                    }, false);
                 break;
-            }
-        }
-        bigPlayer2  
+            }        
     }
 })
 

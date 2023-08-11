@@ -226,7 +226,7 @@
       }
       
       seekTo(value) {
-        this.audio.currentTime = value;
+        this.audio.currentTime = Math.ceil(value);
       }
       
       updateAudioTime() {
@@ -496,16 +496,16 @@ customElements.whenDefined('audio-player').then((response) => {
   const player1ProgressBar = bigPlayer1.progressBar;
   const player2ProgressBar = bigPlayer2.progressBar;
   player1PlayPauseButton.addEventListener('click', () => {
-    player2PlayPauseButton.click()
+    player2PlayPauseButton.click();
   })
   player2PlayPauseButton.addEventListener('click', () => {
-    player1PlayPauseButton.click()
+    player1PlayPauseButton.click();
   })
   player1ProgressBar.addEventListener('input', (e) => {
-    bigPlayer2.seekTo(bigPlayer1.progressBar.value)
+    bigPlayer2.seekTo(bigPlayer1.progressBar.value);
   }, false);
   player2ProgressBar.addEventListener('input', (e) => {
-    bigPlayer1.seekTo(bigPlayer2.progressBar.value)
+    bigPlayer1.seekTo(bigPlayer2.progressBar.value);
   }, false);
 })
 
@@ -517,17 +517,19 @@ switchButton.addEventListener('click', () => {
   buttonText = switchButton.value
   if (buttonText.indexOf("OFF") !== -1) {
     switchButton.value = "FX ON";
+    bigPlayer2.seekTo(bigPlayer1.progressBar.value);
     bigPlayer1.hidden = true;
     bigPlayer2.hidden = false;
     bigPlayer1.volumeBar.parentNode.click();
     bigPlayer2.volumeBar.parentNode.click();
   } else if (buttonText.indexOf("ON") !== -1) {
     switchButton.value = "FX OFF";
-    // switchButton.width = switchButton.height
+    bigPlayer1.seekTo(bigPlayer2.progressBar.value);
     bigPlayer1.hidden = false;
     bigPlayer2.hidden = true;
     bigPlayer1.volumeBar.parentNode.click();
     bigPlayer2.volumeBar.parentNode.click();
+
   }
 })
 

@@ -52,17 +52,20 @@ function display(result) {
     resultBox.innerHTML = "<ul>" + content.join('') + "</ul>";
 }
 
+selectModelEvent = new CustomEvent("selectModel");
+
+let selectedModel;
 function selectInput(list) {
-    console.log(inputBox.getAttribute('checked'));
     inputBox.value = list.innerHTML;
     inputBox.setAttribute('checked', true);
-    console.log(inputBox.checked)
     resultBox.innerHTML = '';
-    inputBox.focus()
+    inputBox.focus();
+    selectedModel = inputBox.value;
+    inputBox.dispatchEvent(selectModelEvent);
 }
 
-const listButton = document.querySelector('.clear-btn');
-listButton.addEventListener('click', () => {
+const clearButton = document.querySelector('.clear-btn');
+clearButton.addEventListener('click', () => {
     if (inputBox.value) {
         inputBox.value = '';
         inputBox.setAttribute('checked', false);
@@ -79,5 +82,4 @@ inputBox.addEventListener('click', () => {
     }
 })
 
-// console.log(String.fromCodePoint(parseInt('f00d', 16)))
-listButton.prepend("\u2715")
+clearButton.prepend("\u2715")
