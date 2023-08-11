@@ -29,9 +29,13 @@ inputBox.addEventListener("keydown", (event) => {
         for (let link of earphoneList) {
             if (nameInLink(inputBox.value, link)) {
                 console.log("Есть попадание!");
-                // bigPlayer1.playPauseBtn.click();
+                if (bigPlayer1.playing) {
+                    bigPlayer1.playPauseBtn.click();
+                } 
                 bigPlayer2.setAttribute("src", formatLink(link));
-                bigPlayer2.seekTo(Math.max(bigPlayer1.progressBar.value, bigPlayer2.progressBar.value));
+                // bigPlayer2.seekTo(Math.max(bigPlayer1.progressBar.value, bigPlayer2.progressBar.value));
+                bigPlayer2.seekTo(0);
+                bigPlayer1.seekTo(0);
                 break;
             }
         }
